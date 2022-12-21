@@ -58,7 +58,21 @@ const displayUser = (e) => {
   p.innerHTML = `user_name: ${generateFirstName()}*** 
   user_last_name: ${generateLastName()}***
   user_id: ${generateUserID()}***
-   user_email: ${generateUserEmail()}***`;
+   user_email: ${generateUserEmail()}***
+   user_avatar: ${generateAvatar()}`;
 };
+
+// generates random avatar for user
+const generateAvatar = () => {
+  const name = generateFirstName();
+  const img = document.createElement('img');
+  img.setAttribute('src', 'alt');
+  img.classList.add('avatar');
+  document.body.appendChild(img)
+  const url = `https://avatars.dicebear.com/api/personas/${name}.svg`
+  return img.src = url;
+}
+
+
 
 btn.addEventListener("click", displayUser);
