@@ -50,16 +50,31 @@ generateUserID();
 //p.innerHTML = generateUserEmail();
 
 // generates a random User and displays it to the screen
-generateRandomUser = () => {};
+generateRandomUser = () => {
+  return {
+    userFirstName: generateFirstName(),
+    userLastName: generateLastName(),
+    userId: generateUserID(),
+    userEmail: generateUserEmail(),
+    userAvatar: generateAvatar(),
+  };
+};
 
 // display user info
 const displayUser = (e) => {
   e.preventDefault();
-  p.innerHTML = `user_name: ${generateFirstName()}*** 
-  user_last_name: ${generateLastName()}***
-  user_id: ${generateUserID()}***
-   user_email: ${generateUserEmail()}***
-   user_avatar: ${generateAvatar()}`;
+  let { userFirstName, userLastName, userId, userEmail, userAvatar } =
+    generateRandomUser();
+
+  // new array to store values received from function to be saved to the localstorage
+  const user = [userFirstName, userLastName, userId, userEmail];
+
+  localStorage.setItem("user", user);
+  p.innerHTML = `user_name: ${userFirstName}*** 
+  user_last_name: ${userLastName}***
+  user_id: ${userId}***
+   user_email: ${userEmail}***
+   user_avatar: ${userAvatar}`;
 };
 
 // creates img
@@ -75,7 +90,7 @@ const createImgTag = () => {
 const generateAvatar = () => {
   const name = generateFirstName();
   const img = createImgTag();
-  const url = `https://avatars.dicebear.com/api/personas/${name}.svg`;
+  const url = `https://avatars.dicebear.com/api/miniavs/${name}.svg`;
   return (img.src = url);
 };
 
