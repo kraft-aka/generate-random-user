@@ -1,5 +1,6 @@
 const p = document.querySelector("#para");
 const btn = document.querySelector("#generate-btn");
+const refreshBtn = document.querySelector('#refresh-btn');
 
 const usersNames = [
   "Amir",
@@ -94,4 +95,11 @@ const generateAvatar = () => {
   return (img.src = url);
 };
 
+const refreshScreen = (e) => {
+  e.preventDefault();
+  window.location.reload();
+  localStorage.removeItem('user');
+}
+
 btn.addEventListener("click", displayUser);
+refreshBtn.addEventListener('click', refreshScreen);
