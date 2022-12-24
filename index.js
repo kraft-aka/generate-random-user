@@ -1,6 +1,6 @@
 const p = document.querySelector("#para");
 const btn = document.querySelector("#generate-btn");
-const refreshBtn = document.querySelector('#refresh-btn');
+const refreshBtn = document.querySelector("#refresh-btn");
 
 const usersNames = [
   "Amir",
@@ -24,7 +24,13 @@ const usersLastNames = [
 ];
 
 // generates a random number for userId
-const generateUserID = () => Math.floor(Math.random() * 200);
+const generateUserID = () => {
+  let ID = "";
+  for (let i = 0; i < 10; i++) {
+    ID += Math.floor(Math.random() * 10);
+  }
+  return ID;
+};
 
 // generates a ranodm user first name
 const generateFirstName = () => {
@@ -98,8 +104,8 @@ const generateAvatar = () => {
 const refreshScreen = (e) => {
   e.preventDefault();
   window.location.reload();
-  localStorage.removeItem('user');
-}
+  localStorage.removeItem("user");
+};
 
 btn.addEventListener("click", displayUser);
-refreshBtn.addEventListener('click', refreshScreen);
+refreshBtn.addEventListener("click", refreshScreen);
