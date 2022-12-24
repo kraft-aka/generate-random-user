@@ -23,6 +23,8 @@ const usersLastNames = [
   "Poe",
 ];
 
+const usersOccupation = [''] 
+
 // generates a random number for userId
 const generateUserID = () => {
   let ID = "";
@@ -50,12 +52,6 @@ const generateUserEmail = (fName, lName) => {
   return email;
 };
 
-generateFirstName();
-generateLastName();
-generateUserID();
-//console.log(generateUserID());
-//p.innerHTML = generateUserEmail();
-
 // generates a random User and displays it to the screen
 generateRandomUser = () => {
   return {
@@ -80,8 +76,7 @@ const displayUser = (e) => {
   p.innerHTML = `user_name: ${userFirstName}*** 
   user_last_name: ${userLastName}***
   user_id: ${userId}***
-   user_email: ${userEmail}***
-   user_avatar: ${userAvatar}`;
+   user_email: ${userEmail}***`;
 };
 
 // creates img
