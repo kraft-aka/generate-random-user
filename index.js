@@ -23,7 +23,29 @@ const usersLastNames = [
   "Poe",
 ];
 
-const usersOccupation = [''] 
+const usersOccupation = [
+  "doctor",
+  "driver",
+  "lawyer",
+  "teacher",
+  "houskeeper",
+  "architect",
+  "backer",
+  "sales manager",
+  "artist",
+  "musician",
+  "pilot",
+  "constructor",
+  "engineer",
+  "dentist",
+  "pharmasist",
+  "programmer",
+  "gamer",
+  "youtuber",
+  "writer",
+  "painter",
+  "web designer",
+];
 
 // generates a random number for userId
 const generateUserID = () => {
@@ -37,6 +59,11 @@ const generateUserID = () => {
 // generates a ranodm user first name
 const generateFirstName = () => {
   return usersNames[Math.floor(Math.random() * usersNames.length)];
+};
+
+// generates a random occupation
+const generateUserOccupation = () => {
+  return usersOccupation[Math.floor(Math.random() * usersOccupation.length)];
 };
 
 // generates a random user last name
@@ -59,6 +86,7 @@ generateRandomUser = () => {
     userLastName: generateLastName(),
     userId: generateUserID(),
     userEmail: generateUserEmail(),
+    userOccupation: generateUserOccupation(),
     userAvatar: generateAvatar(),
   };
 };
@@ -66,17 +94,18 @@ generateRandomUser = () => {
 // display user info
 const displayUser = (e) => {
   e.preventDefault();
-  let { userFirstName, userLastName, userId, userEmail, userAvatar } =
+  let { userFirstName, userLastName, userId, userEmail, userOccupation } =
     generateRandomUser();
 
   // new array to store values received from function to be saved to the localstorage
-  const user = [userFirstName, userLastName, userId, userEmail];
+  const user = [userFirstName, userLastName, userId, userEmail, userOccupation];
 
   localStorage.setItem("user", user);
   p.innerHTML = `user_name: ${userFirstName}*** 
   user_last_name: ${userLastName}***
   user_id: ${userId}***
-   user_email: ${userEmail}***`;
+  user_email: ${userEmail}***
+  user_occupation: ${userOccupation}`;
 };
 
 // creates img
