@@ -125,11 +125,14 @@ const generateAvatar = () => {
   return (img.src = url);
 };
 
+// refreshes the screen
 const refreshScreen = (e) => {
   e.preventDefault();
   window.location.reload();
   localStorage.removeItem("user");
 };
 
+
+// events
 btn.addEventListener("click", displayUser);
 refreshBtn.addEventListener("click", refreshScreen);
