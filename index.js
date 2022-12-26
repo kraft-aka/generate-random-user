@@ -5,6 +5,8 @@ const refreshBtn = document.querySelector("#refresh-btn");
 const userFullName = document.querySelector('.user-full-name');
 const userProfession = document.querySelector('.user-occupation');
 const userImg = document.querySelector('#user-avatar');
+const modalContainer = document.querySelector('#modal-container')
+const card = document.querySelector('.card')
 
 const usersNames = [
   "Amir",
@@ -133,7 +135,54 @@ const refreshScreen = (e) => {
   localStorage.removeItem("user");
 };
 
+// shows modal
+const showModal = () => {
+  modalContainer.textContent = ''
+  modalContainer.classList.add('is-visible');
+}
+
+// hides modal
+const hideModal = () => {
+  modalContainer.classList.remove('is-visible')
+}
+
+// modal container
+const modalDiv = document.createElement('div');
+modalDiv.classList.add('modal-content');
+
+// modal title
+const modalTitle = document.createElement('h2');
+modalTitle.textContent =  2 //`${generateFirstName()}'s profile`
+
+// modal user's id
+// const modalUserId = document.createElement('p');
+// modalUserId.textContent = generateUserID();
+
+// modal user's email
+// const modalUserEmail = document.createElement('p');
+// modalUserEmail.textContent = generateUserEmail();
+
+// modal close btn
+const modalCloseBtn = document.createElement('p');
+modalCloseBtn.textContent = 'x';
+modalCloseBtn.classList.add('modal-close-btn');
+
+modalDiv.appendChild(modalTitle);
+// modalDiv.appendChild(modalUserId);
+// modalDiv.appendChild(modalUserEmail);
+modalDiv.appendChild(modalCloseBtn);
+modalContainer.appendChild(modalDiv);
+
+
+
+window.addEventListener('keydown', (e)=> {
+  if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+    hideModal();
+  }
+})
 
 // events
 btn.addEventListener("click", displayUser);
 refreshBtn.addEventListener("click", refreshScreen);
+card.addEventListener('click', showModal)
+modalCloseBtn.addEventListener('click', hideModal)
