@@ -2,6 +2,10 @@ const p = document.querySelector("#para");
 const btn = document.querySelector("#generate-btn");
 const refreshBtn = document.querySelector("#refresh-btn");
 
+const userFullName = document.querySelector('.user-full-name');
+const userProfession = document.querySelector('.user-occupation');
+const userImg = document.querySelector('#user-avatar');
+
 const usersNames = [
   "Amir",
   "Ivan",
@@ -101,28 +105,25 @@ const displayUser = (e) => {
   const user = [userFirstName, userLastName, userId, userEmail, userOccupation];
 
   localStorage.setItem("user", user);
-  p.innerHTML = `user_name: ${userFirstName}*** 
-  user_last_name: ${userLastName}***
-  user_id: ${userId}***
-  user_email: ${userEmail}***
-  user_occupation: ${userOccupation}`;
+  const fullName = `${userFirstName} ${userLastName}`
+  userFullName.textContent = fullName;
+  userProfession.textContent = userOccupation;
 };
 
-// creates img
-const createImgTag = () => {
-  const img = document.createElement("img");
-  img.setAttribute("src", "alt");
-  img.classList.add("avatar");
-  document.body.appendChild(img);
-  return img;
-};
+// // creates img
+// const createImgTag = () => {
+//   const img = document.createElement("img");
+//   img.setAttribute("src", "alt");
+//   img.classList.add("avatar");
+//   document.body.appendChild(img);
+//   return img;
+// };
 
 // generates random avatar for user
 const generateAvatar = () => {
   const name = generateFirstName();
-  const img = createImgTag();
   const url = `https://avatars.dicebear.com/api/miniavs/${name}.svg`;
-  return (img.src = url);
+  return (userImg.src = url);
 };
 
 // refreshes the screen
