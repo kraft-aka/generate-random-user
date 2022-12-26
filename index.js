@@ -2,11 +2,11 @@ const p = document.querySelector("#para");
 const btn = document.querySelector("#generate-btn");
 const refreshBtn = document.querySelector("#refresh-btn");
 
-const userFullName = document.querySelector('.user-full-name');
-const userProfession = document.querySelector('.user-occupation');
-const userImg = document.querySelector('#user-avatar');
-const modalContainer = document.querySelector('#modal-container')
-const card = document.querySelector('.card')
+const userFullName = document.querySelector(".user-full-name");
+const userProfession = document.querySelector(".user-occupation");
+const userImg = document.querySelector("#user-avatar");
+const modalContainer = document.querySelector("#modal-container");
+const card = document.querySelector(".card");
 
 const usersNames = [
   "Amir",
@@ -107,19 +107,10 @@ const displayUser = (e) => {
   const user = [userFirstName, userLastName, userId, userEmail, userOccupation];
 
   localStorage.setItem("user", user);
-  const fullName = `${userFirstName} ${userLastName}`
+  const fullName = `${userFirstName} ${userLastName}`;
   userFullName.textContent = fullName;
   userProfession.textContent = userOccupation;
 };
-
-// // creates img
-// const createImgTag = () => {
-//   const img = document.createElement("img");
-//   img.setAttribute("src", "alt");
-//   img.classList.add("avatar");
-//   document.body.appendChild(img);
-//   return img;
-// };
 
 // generates random avatar for user
 const generateAvatar = () => {
@@ -135,54 +126,51 @@ const refreshScreen = (e) => {
   localStorage.removeItem("user");
 };
 
-// shows modal
+// show modal
 const showModal = () => {
-  modalContainer.textContent = ''
-  modalContainer.classList.add('is-visible');
-}
+  modalContainer.classList.add("is-visible");
+};
 
-// hides modal
+// hide modal
 const hideModal = () => {
-  modalContainer.classList.remove('is-visible')
-}
+  modalContainer.classList.remove("is-visible");
+};
 
-// modal container
-const modalDiv = document.createElement('div');
-modalDiv.classList.add('modal-content');
+// modal
+const modalDiv = document.createElement("div");
+modalDiv.classList.add("modal-content");
 
 // modal title
-const modalTitle = document.createElement('h2');
-modalTitle.textContent =  2 //`${generateFirstName()}'s profile`
+const modalTitle = document.createElement("h2");
+modalTitle.innerText = "User Info";
+
+// modal content
+const modalContent = document.createElement("p");
+modalContent.textContent =
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, eos ullam voluptates, ducimus necessitatibus possimus impedit aperiam doloribus earum adipisci iure? Similique incidunt vitae harum molestiae accusamus provident sint sit.";
 
 // modal user's id
-// const modalUserId = document.createElement('p');
-// modalUserId.textContent = generateUserID();
-
-// modal user's email
-// const modalUserEmail = document.createElement('p');
-// modalUserEmail.textContent = generateUserEmail();
+const modalUserId = document.createElement("p");
 
 // modal close btn
-const modalCloseBtn = document.createElement('p');
-modalCloseBtn.textContent = 'x';
-modalCloseBtn.classList.add('modal-close-btn');
+const modalCloseBtn = document.createElement("p");
+modalCloseBtn.classList.add("modal-close-btn");
+modalCloseBtn.innerText = "X";
 
 modalDiv.appendChild(modalTitle);
-// modalDiv.appendChild(modalUserId);
-// modalDiv.appendChild(modalUserEmail);
+modalDiv.appendChild(modalContent);
 modalDiv.appendChild(modalCloseBtn);
+modalDiv.appendChild(modalUserId);
 modalContainer.appendChild(modalDiv);
 
-
-
-window.addEventListener('keydown', (e)=> {
-  if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && modalContainer.classList.contains("is-visible")) {
     hideModal();
   }
-})
+});
 
 // events
 btn.addEventListener("click", displayUser);
 refreshBtn.addEventListener("click", refreshScreen);
-card.addEventListener('click', showModal)
-modalCloseBtn.addEventListener('click', hideModal)
+card.addEventListener("click", showModal);
+modalCloseBtn.addEventListener("click", hideModal);
