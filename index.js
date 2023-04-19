@@ -54,13 +54,7 @@ const usersOccupation = [
 ];
 
 // generates a random number for userId
-const generateUserID = () => {
-  let ID = "";
-  for (let i = 0; i < 10; i++) {
-    ID += Math.floor(Math.random() * 10);
-  }
-  return ID;
-};
+const generateUserID = () => Math.floor(Math.random() * 100000);
 
 // generates a ranodm user first name
 const generateFirstName = () => {
