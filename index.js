@@ -5,6 +5,7 @@ const refreshBtn = document.querySelector("#refresh-btn");
 const userFullName = document.querySelector(".user-full-name");
 const userProfession = document.querySelector(".user-occupation");
 const userImg = document.querySelector("#user-avatar");
+const userEmailEl = document.querySelector('.user-email')
 const modalContainer = document.querySelector("#modal-container");
 const card = document.querySelector(".card");
 
@@ -65,6 +66,13 @@ const generateUserEmail = (firstName, lastName) => {
   return `${firstName.toLowerCase()}.${lastName.toLowerCase()}@mail.com`;
 };
 
+// generates random avatar for user
+const generateAvatar = () => {
+  const name = getRandomItemFromArray(usersNames);
+  const url = `https://avatars.dicebear.com/api/miniavs/${name}.svg`;
+  return (userImg.src = url);
+};
+
 // generates a random User and displays it to the screen
 generateRandomUser = () => {
   const firstName = getRandomItemFromArray(usersNames);
@@ -79,12 +87,13 @@ generateRandomUser = () => {
   };
 };
 
+
+
 // display user info
 const displayUser = (e) => {
   e.preventDefault();
   const { userFirstName, userLastName, userId, userEmail, userOccupation } =
-    generateRandomUser();
-
+  generateRandomUser();
   // new array to store values received from function to be saved to the localstorage
   const user = [userFirstName, userLastName, userId, userEmail, userOccupation];
 
@@ -92,14 +101,9 @@ const displayUser = (e) => {
   const fullName = `${userFirstName} ${userLastName}`;
   userFullName.textContent = fullName;
   userProfession.textContent = userOccupation;
+  userEmailEl.textContent = userEmail
 };
 
-// generates random avatar for user
-const generateAvatar = () => {
-  const name = getRandomItemFromArray(usersNames);
-  const url = `https://avatars.dicebear.com/api/miniavs/${name}.svg`;
-  return (userImg.src = url);
-};
 
 // refreshes the screen
 const refreshScreen = (e) => {
@@ -127,10 +131,19 @@ const modalTitle = document.createElement("h2");
 modalTitle.innerText = "User Info";
 
 // modal content
-const modalContent = document.createElement("p");
-modalContent.textContent =
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, eos ullam voluptates, ducimus necessitatibus possimus impedit aperiam doloribus earum adipisci iure? Similique incidunt vitae harum molestiae accusamus provident sint sit.";
+const modalContent = document.createElement("div");
 
+// display data in modal //must be reveised
+const modalData = () => {
+  const data = `<ul>
+  <li>user full name: ${userFirstName} ${userLastName}<li>
+  <li>user id: ${userId}<li>
+  <li>user email: ${userEmail}<li>
+  <li>user occupation: ${userOccupation}<li>
+  </ul>`
+  modalContent.innerHTML = data
+}
+  
 // modal user's id
 const modalUserId = document.createElement("p");
 
@@ -154,5 +167,8 @@ window.addEventListener("keydown", (e) => {
 // events
 btn.addEventListener("click", displayUser);
 refreshBtn.addEventListener("click", refreshScreen);
-card.addEventListener("click", showModal);
+card.addEventListener("click",()=> {
+  showModal();
+  // modalData();
+});
 modalCloseBtn.addEventListener("click", hideModal);
