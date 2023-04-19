@@ -18,7 +18,7 @@ h1 {
   border: none;
   border-radius: 1em;
   max-width: 50%;
-  height: 80vh;
+  min-height: 90vh;
   margin: 0 auto;
   background-color: #f2f9ff;
   text-align: center;
@@ -44,12 +44,13 @@ button:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
+/* Card Item */
 .card {
   display: flex;
   justify-content: center;
   flex-direction: column;
   max-width: 40%;
-  height: 50vh;
+  min-height: 50vh;
   border: none;
   background-color: #fbf5ff;
   border-radius: 1em;
@@ -66,14 +67,23 @@ button:hover {
 }
 
 .card-container {
-  display: block;
-  max-width: 100%;
-  height: 10vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items:flex-start;
+  max-width: 100hv;
+  min-height: 10vh;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .avatar {
-  width: 80%;
-  margin: 0 auto;
+  width: 70%;
+  margin: 1.5em auto;
+}
+
+li {
+  list-style-type: none;
 }
 
 /* Modal */

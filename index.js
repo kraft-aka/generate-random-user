@@ -6,6 +6,7 @@ const userFullName = document.querySelector(".user-full-name");
 const userProfession = document.querySelector(".user-occupation");
 const userImg = document.querySelector("#user-avatar");
 const userEmailEl = document.querySelector(".user-email");
+const userIdEl = document.querySelector('.user-id')
 const modalContainer = document.querySelector("#modal-container");
 const card = document.querySelector(".card");
 
@@ -97,9 +98,10 @@ const displayUser = (e) => {
 
   localStorage.setItem("user", user);
   const fullName = `${userFirstName} ${userLastName}`;
-  userFullName.textContent = fullName;
-  userProfession.textContent = userOccupation;
-  userEmailEl.textContent = userEmail;
+  userFullName.innerHTML = `<i>user name</i>: <strong>${fullName}</strong>`;
+  userProfession.innerHTML = `<i>profession</i>: <strong>${userOccupation}</strong>`;
+  userEmailEl.innerHTML = `<i>email</i>: <strong>${userEmail}</strong>`;
+  userIdEl.innerHTML = `<i>id</i>: <strong>${userId}</strong>`
 };
 
 // refreshes the screen
@@ -138,7 +140,7 @@ const modalData = () => {
   <li>user full name: ${userFirstName} ${userLastName}<li>
   <li>user id: ${userId}<li>
   <li>user email: ${userEmail}<li>
-  <li>user occupation: ${userOccupation}<li>
+  <li>user profession: ${userOccupation}<li>
   </ul>`;
   modalContent.innerHTML = data;
 };
