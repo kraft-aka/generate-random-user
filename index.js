@@ -79,19 +79,19 @@ const generateLastName = () => {
 
 // generates a user email
 const generateUserEmail = (fName, lName) => {
-  fName = generateFirstName();
-  lName = generateLastName();
   let email = `${fName.toLowerCase()}.${lName.toLowerCase()}@mail.com`;
   return email;
 };
 
 // generates a random User and displays it to the screen
 generateRandomUser = () => {
+  const firstName = generateFirstName()
+  const lastName = generateLastName()
   return {
-    userFirstName: generateFirstName(),
-    userLastName: generateLastName(),
+    userFirstName: firstName,
+    userLastName: lastName,
     userId: generateUserID(),
-    userEmail: generateUserEmail(),
+    userEmail: generateUserEmail(firstName,lastName),
     userOccupation: generateUserOccupation(),
     userAvatar: generateAvatar(),
   };
