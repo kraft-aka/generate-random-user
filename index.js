@@ -72,8 +72,8 @@ const generateLastName = () => {
 };
 
 // generates a user email
-const generateUserEmail = (fName, lName) => {
-  return `${fName.toLowerCase()}.${lName.toLowerCase()}@mail.com`;
+const generateUserEmail = (firstName, lastName) => {
+  return `${firstName.toLowerCase()}.${lastName.toLowerCase()}@mail.com`;
 };
 
 // generates a random User and displays it to the screen
@@ -93,7 +93,7 @@ generateRandomUser = () => {
 // display user info
 const displayUser = (e) => {
   e.preventDefault();
-  let { userFirstName, userLastName, userId, userEmail, userOccupation } =
+  const { userFirstName, userLastName, userId, userEmail, userOccupation } =
     generateRandomUser();
 
   // new array to store values received from function to be saved to the localstorage
@@ -115,8 +115,8 @@ const generateAvatar = () => {
 // refreshes the screen
 const refreshScreen = (e) => {
   e.preventDefault();
-  window.location.reload();
   localStorage.removeItem("user");
+  window.location.reload();
 };
 
 // show modal
