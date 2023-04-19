@@ -56,20 +56,9 @@ const usersOccupation = [
 // generates a random number for userId
 const generateUserID = () => Math.floor(Math.random() * 100000);
 
-// generates a ranodm user first name
-const generateFirstName = () => {
-  return usersNames[Math.floor(Math.random() * usersNames.length)];
-};
-
-// generates a random occupation
-const generateUserOccupation = () => {
-  return usersOccupation[Math.floor(Math.random() * usersOccupation.length)];
-};
-
-// generates a random user last name
-const generateLastName = () => {
-  return usersLastNames[Math.floor(Math.random() * usersLastNames.length)];
-};
+// gets random item from array
+const getRandomItemFromArray = (arr) =>
+  arr[Math.floor(Math.random() * arr.length)];
 
 // generates a user email
 const generateUserEmail = (firstName, lastName) => {
@@ -78,14 +67,14 @@ const generateUserEmail = (firstName, lastName) => {
 
 // generates a random User and displays it to the screen
 generateRandomUser = () => {
-  const firstName = generateFirstName();
-  const lastName = generateLastName();
+  const firstName = getRandomItemFromArray(usersNames);
+  const lastName = getRandomItemFromArray(usersLastNames);
   return {
     userFirstName: firstName,
     userLastName: lastName,
     userId: generateUserID(),
     userEmail: generateUserEmail(firstName, lastName),
-    userOccupation: generateUserOccupation(),
+    userOccupation: getRandomItemFromArray(usersOccupation),
     userAvatar: generateAvatar(),
   };
 };
@@ -107,7 +96,7 @@ const displayUser = (e) => {
 
 // generates random avatar for user
 const generateAvatar = () => {
-  const name = generateFirstName();
+  const name = getRandomItemFromArray(usersNames);
   const url = `https://avatars.dicebear.com/api/miniavs/${name}.svg`;
   return (userImg.src = url);
 };
