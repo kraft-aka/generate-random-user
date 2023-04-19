@@ -126,6 +126,7 @@ button:hover {
   background: none;
   color: #777;
   text-decoration: none;
+  transition: .4s all ease-in-out;
 }
 
 .modal-close-btn:hover {

@@ -5,7 +5,7 @@ const refreshBtn = document.querySelector("#refresh-btn");
 const userFullName = document.querySelector(".user-full-name");
 const userProfession = document.querySelector(".user-occupation");
 const userImg = document.querySelector("#user-avatar");
-const userEmailEl = document.querySelector('.user-email')
+const userEmailEl = document.querySelector(".user-email");
 const modalContainer = document.querySelector("#modal-container");
 const card = document.querySelector(".card");
 
@@ -87,13 +87,11 @@ generateRandomUser = () => {
   };
 };
 
-
-
 // display user info
 const displayUser = (e) => {
   e.preventDefault();
   const { userFirstName, userLastName, userId, userEmail, userOccupation } =
-  generateRandomUser();
+    generateRandomUser();
   // new array to store values received from function to be saved to the localstorage
   const user = [userFirstName, userLastName, userId, userEmail, userOccupation];
 
@@ -101,9 +99,8 @@ const displayUser = (e) => {
   const fullName = `${userFirstName} ${userLastName}`;
   userFullName.textContent = fullName;
   userProfession.textContent = userOccupation;
-  userEmailEl.textContent = userEmail
+  userEmailEl.textContent = userEmail;
 };
-
 
 // refreshes the screen
 const refreshScreen = (e) => {
@@ -135,17 +132,16 @@ const modalContent = document.createElement("div");
 
 // display data in modal //must be reveised
 const modalData = () => {
+  const { userFirstName, userLastName, userId, userEmail, userOccupation } =
+    generateRandomUser();
   const data = `<ul>
   <li>user full name: ${userFirstName} ${userLastName}<li>
   <li>user id: ${userId}<li>
   <li>user email: ${userEmail}<li>
   <li>user occupation: ${userOccupation}<li>
-  </ul>`
-  modalContent.innerHTML = data
-}
-  
-// modal user's id
-const modalUserId = document.createElement("p");
+  </ul>`;
+  modalContent.innerHTML = data;
+};
 
 // modal close btn
 const modalCloseBtn = document.createElement("p");
@@ -155,7 +151,6 @@ modalCloseBtn.innerText = "X";
 modalDiv.appendChild(modalTitle);
 modalDiv.appendChild(modalContent);
 modalDiv.appendChild(modalCloseBtn);
-modalDiv.appendChild(modalUserId);
 modalContainer.appendChild(modalDiv);
 
 window.addEventListener("keydown", (e) => {
@@ -167,8 +162,8 @@ window.addEventListener("keydown", (e) => {
 // events
 btn.addEventListener("click", displayUser);
 refreshBtn.addEventListener("click", refreshScreen);
-card.addEventListener("click",()=> {
+card.addEventListener("click", () => {
   showModal();
-  // modalData();
+  modalData();
 });
 modalCloseBtn.addEventListener("click", hideModal);
